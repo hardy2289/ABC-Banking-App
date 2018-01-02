@@ -45,12 +45,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Workspace</a>
+        <a class="navbar-brand" href="#"><%= image_tag("abcbanklogo.PNG", :size => '60x45') %> </a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+            <li>&nbsp;<%= link_to "About Us", "/about.html.erb" %></li>
+            <li>&nbsp;<%= link_to "Branch", "/path2"  %></li>
+            <li>&nbsp;<%= link_to "Contact Us", "/path3"  %></li>
           </ul>
           
           <ul class="nav navbar-right col-md-4">
@@ -88,17 +88,16 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
-      <br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br>
     </div> <!-- /container -->
-    <hr color='black'>
-      <footer>
-        <p align='center'>&copy; ABC Bank Private Limited.</p>
-      </footer>
-    <hr color='black'>
+    
+      <footer id="sticky" align='center'>
+        &copy; ABC Bank Private Limited.</footer>
+        
   </body>
 </html>
