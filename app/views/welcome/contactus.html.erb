@@ -1,63 +1,66 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-<style>
-input[type=text], select, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-}
-
-input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-.container {
-    border-radius: 8px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-</style>
+	<meta charset="UTF-8">
+	<title>HTML5 and JavaScript Contact Form | Onextrapixel</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="author" content="@toddmotto">
+	<link href="stylesheets/style.css.scss" rel="stylesheet">
+	
+	
 </head>
+
 <body>
+	
+	<div class="wrapper">
+		<div id="main" style="padding:50px 0 0 0;">
+		
+		<!-- Form -->
+		<form id="contact-form" action="/" method="post">
+			<h3>Get in touch</h3>
+			<h4>Fill in the form below, and we'll get back to you within 24 hours. Or Call us on 0800 123 4567.</h4>
+			<div>
+				<label>
+					<span>Name: (required)</span>
+					<input placeholder="Please enter your name" type="text" tabindex="1" required autofocus>
+				</label>
+			</div>
+			<div>
+				<label>
+					<span>Email: (required)</span>
+					<input placeholder="Please enter your email address" type="email" tabindex="2" required>
+				</label>
+			</div>
+			<div>
+				<label>
+					<span>Telephone: (required)</span>
+					<input placeholder="Please enter your number" type="tel" tabindex="3" required>
+				</label>
+			</div>
+			
+			<div>
+				<label>
+					<span>Message: (required)</span>
+					<textarea placeholder="Include all the details you can" tabindex="5" required></textarea>
+				</label>
+			</div>
+			<div>
+				<button name="submit" type="submit" id="contact-submit">Send Email</button>
+			</div>
+			
+			<div>
+				<br>
+				 <%= link_to " Back", root_path, class: 'btn btn-primary'  %>
+				
+			</div>
+		</form>
+	
+		<!-- /Form -->
+		
+		</div>
+	</div>
 
-<h3>Contact Form</h3>
-
-<div class="container">
-  <form action="/action_page.php">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-    <label for="city">City</label>
-    <select id="city" name="city">
-      <option value="london">London</option>
-      <option value="birmingham">Birmingham</option>
-      <option value="leicester">Leicester</option>
-    </select>
-
-    <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-    <input type="submit" value="Submit">
-  </form>
-</div>
-
+	<script src="javascripts/scriptscontact.js"></script>
+	
 </body>
 </html>

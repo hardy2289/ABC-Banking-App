@@ -45,7 +45,7 @@ padding-top: 5px;
 
 font-weight:bold;
 
-font-size:16px;
+font-size:15px;
 .navbar-link {
 
 border-radius: 5px;
@@ -142,15 +142,13 @@ color: #fff;
   width:100%;
   padding:20px;
   padding-bottom:16px;
-  background:white;
-  color:black;
+  background:#f2f2f2;
+  color: #333333;
   font-weight:bold;
-  font-size:16px;
+  font-size:18px;
   text-align:center;
   position:fixed;    /*Here's what sticks it*/
   bottom:0;          /*to the bottom of the body*/
   left:0;            /*and to the left of the body.*/
   
-  /*EFFECTS*/
-  background:rgba(0, 0, 0, .5) /*the a value of .5 makes it transparent*/
-}
+  }
