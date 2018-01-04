@@ -18,6 +18,8 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
       <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
+      &nbsp;&nbsp;
+        <%= link_to " Back", root_path, class: 'btn btn-primary'  %>
     <% end %>
   </div>
 </div>
