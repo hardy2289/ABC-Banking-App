@@ -11,15 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229233435) do
+ActiveRecord::Schema.define(version: 20180104210858) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "bankLocation"
+    t.string   "userId"
+    t.string   "userName"
+    t.string   "userEmail"
+    t.string   "userPhoneNo"
+    t.string   "userAddress"
+    t.string   "accountType"
+    t.float    "balance"
+    t.float    "overdraftLimit"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string   "staffId"
+    t.string   "staffName"
+    t.string   "staffEmail"
+    t.string   "staffPhoneNo"
+    t.string   "staffRole"
+    t.string   "workAtBranch"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string   "transactionId"
+    t.string   "userId"
+    t.string   "accountId"
+    t.string   "staffId"
+    t.float    "trasactionAmount"
+    t.float    "balanceBeforeTransaction"
+    t.float    "balanceAfterTransaction"
+    t.string   "transactionDetails"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: falsera
+  end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -28,8 +66,10 @@ ActiveRecord::Schema.define(version: 20171229233435) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false
+    t.boolean  "verify",                 default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
