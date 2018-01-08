@@ -2,9 +2,11 @@ class CreateTransactions < ActiveRecord::Migration
   def change
     create_table :transactions do |t|
       t.string :transactionId
-      t.string :userId
-      t.string :accountId
-      t.string :staffId
+      t.string :transPurpose
+      t.string :services
+      t.string :user_id
+      t.string :account_id
+      t.string :staff_id
       t.float :trasactionAmount
       t.float :balanceBeforeTransaction
       t.float :balanceAfterTransaction

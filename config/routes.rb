@@ -2,10 +2,12 @@
 
 Rails.application.routes.draw do
 
+  
+  devise_for :users
   resources :staffs
   resources :transactions
   resources :accounts
-  devise_for :users
+  resources :welcome
   
   root 'welcome#index'
 

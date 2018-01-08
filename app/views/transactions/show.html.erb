@@ -1,14 +1,29 @@
 <p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @transaction.transactionDetails %></h3>
+  <div class="panel-body">
 
 <p>
-  <strong>Transactionid:</strong>
-  <%= @transaction.transactionId %>
+  <strong>Transaction Purpose:</strong>
+  <%= @transaction.transPurpose %>
 </p>
 
 <p>
-  <strong>Useride:</strong>
-  <%= @transaction.userIde %>
+  <strong>Transaction Details:</strong>
+	<%= @transaction.transactionDetails %>
 </p>
+<p>
+  <strong>Transaction Amount:</strong>
+  <%= @transaction.trasactionAmount %>
+</p>
+
+<p>
+  <strong>Recipient Account Number:</strong>
+	<%= @transaction.account_id %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |
 <%= link_to 'Back', transactions_path %>

@@ -1,6 +1,45 @@
-<h1>Editing Staff</h1>
+<%= render 'shared/errors', obj: @staff %>
+<div class='row'>
+<div class='col-xs-12'>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @staff %> |
-<%= link_to 'Back', staffs_path %>
+
+<%= form_for(@staff,:html => {class: "form-horizontal", role: "form"}) do |f| %>
+<div class="panel panel-default">
+	 <div class="panel-heading">
+		 <h4><%= t('.sign_in', :default => "Staffs") %></h4>
+		 </div>
+
+
+<div class="panel-body">
+		<div class="form-group">
+			<%= f.label :Name %><br>
+    <%= f.text_field :staffName,:maxlength => 55,class: "form-control"%>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :Email_Address %><br>
+    <%= f.text_field :staffEmail ,:maxlength => 50, class: "form-control"%>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :Phone_Number %><br>
+    <%= f.text_field :staffPhoneNo,:maxlength => 11, class: "form-control"%>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label :Staff_Role %><br>
+    <%= f.text_field :staffRole, :maxlength => 30,class: "form-control"%>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :Branch_Location %><br>
+    <%= f.select :bankLocation, options_for_select([['Hounslow'],['Kingston'],['Richmond'],['Twickenham']], params[:bankLocation]),{}, { class: "form-control"} %>
+	</div>
+
+  
+  
+  <div class="actions">
+    <%= f.submit class:"btn btn-primary" %>
+  </div>
+<% end %>

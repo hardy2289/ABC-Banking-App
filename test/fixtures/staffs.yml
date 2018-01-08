@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  staffId: MyString
   staffName: MyString
+  staffEmail: MyString
+  staffPhoneNo: MyString
+  staffRole: MyString
+  workAtBranch: MyString
 
 two:
-  staffId: MyString
   staffName: MyString
+  staffEmail: MyString
+  staffPhoneNo: MyString
+  staffRole: MyString
+  workAtBranch: MyString

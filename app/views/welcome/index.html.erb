@@ -1,6 +1,16 @@
-<% if current_user %>
-  <h3>Welcome: <%= current_user.email %></h3>
-<% else %>
+<% if current_user.try(:admin?) %>
+    <h3 align="center">ABC Bank's Total Number of Accounts: <%= @accounts.count %></h3>
+    <%= render 'accounts/account', obj: @accounts %>
+<% else if current_user %>
+
+<% if current_user.verify==false %>
+<h1 align="center"> Welcome to ABC Bank new Website, We Will Update you once we verify your Documents. </h1>
+
+<%= render 'transactions/transaction', obj: @transactions%>
+<% end %>
+
+
+  <% else %>
   <div class="jumbotron" align='center'>
     <h2>Welcome to the ABC Bank New Website</h2>
     <p class="lead">
@@ -10,11 +20,11 @@
 
   <div class="row">
     <div class="plans clearfix">
+      
+      
       <div class="col-lg-5 col-lg-offset-2 plan">
         <h2>Existing Customers</h2>
-        <div class="price pull-right">
-         
-        </div>
+     
         <div class="features">
           <ul>
             <li>Manage Your Accounts</li>
@@ -28,11 +38,11 @@
           <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-primary sign-in' %>
         </p>
       </div>
+      
+      
       <div class="col-lg-3 plan">
         <h2>New Customers</h2>
-        <div class="price pull-right">
-         
-        </div>
+      
         <div class="features">
           <ul>
               <li>Manage Your Accounts</li>
@@ -46,5 +56,8 @@
         </p>
       </div>
     </div>
-  </div>
-<% end %>
+    </div>
+ <% end %>
+ 
+  <% end %>
+ 

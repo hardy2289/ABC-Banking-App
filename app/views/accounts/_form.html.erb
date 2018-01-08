@@ -1,25 +1,69 @@
-<%= form_for(@account) do |f| %>
-  <% if @account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+<%= render 'defaulterror/errors', obj: @account %>
+<div class='row'>
+<div class='col-xs-12'>
+  
+<%= form_for(@account, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
-      <ul>
-      <% @account.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :accounttype %><br>
-    <%= f.text_field :accounttype %>
+<div class="panel panel-default">
+	 <div class="panel-heading">
+		 <h4><%= t('.sign_in', :default => "Open Account") %></h4>
+		 </div>
+		 
+	<div class="form-group">
+		<%= f.label :Branch_Location %><br>
+	<%= f.select :bankLocation, options_for_select([['Hounslow'],['Kingston'],['Richmond'],['Twickenham']], params[:bankLocation]),{}, { class: "form-control"} %>
+	</div>	 
+		 
+	<div class="panel-body">
+  <div class="form-group">
+		<%= f.label :user_Account_Number %><br>
+		<%= f.number_field : c_id, :maxlength => 8,:readonly => true, :value => rand(1..90000001).to_s, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :balance %><br>
-    <%= f.text_field :balance %>
+  
+  <div class="form-group">
+			<%= f.label :Customer_Name %><br>
+				<%= f.text_field :userName,:maxlength => 70, class: "form-control" %>
+	</div>
+	
+	<div class="form-group">
+			<%= f.label :Customer_DOB %><br>
+				<%= f.date_select :dob, :start_year => Time.now.year - 1, :end_year => Time.now.year - 90, :order =>
+    [:day, :month, :year], class: "form-control" %>
+	</div>
+
+	<div class="form-group">
+			<%= f.label :Email_Address %><br>
+			<%= f.collection_select :userEmail, User.all.where(:verify => false,:admin => false), :id, :userEmail, {}, { :class => "form-control"} %>
   </div>
+	
+	<div class="form-group">
+			<%= f.label :Phone_Number %><br>
+			<%= f.number_field :userPhoneNo, :maxlength => 11,class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label :Customer_Address %><br>
+			<%= f.text_field :userAddress,:maxlength => 150, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label :Account_Type %>
+		<%= f.select :accountType, options_for_select([['Current Account'],['Standard Savings Account'],['Online Saving Account']], params[:accountType]),{}, { class: "form-control"} %>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label :Account_Balance %><br>
+    <%= f.number_field :balance, :minlength => 3, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label :Overdraft_Limit %><br>
+		<%= f.number_field :overdraftLimit, :maxlength => 3, class: "form-control" %>
+  </div>
+  
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>

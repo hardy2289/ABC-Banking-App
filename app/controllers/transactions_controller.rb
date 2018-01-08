@@ -1,10 +1,20 @@
 class TransactionsController < ApplicationController
+  
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show,]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    if current_user.admin?
+			@transactions = Transaction.all.order(created_at: :desc)
+			.paginate(page: params[:page], per_page: 15)
+		    elsif current_user
+			@transactions = current_user.transactions.all.order(created_at: :desc)
+			.paginate(page: params[:page], per_page: 10)
+		end
   end
 
   # GET /transactions/1
@@ -15,6 +25,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    @account = Account.all
   end
 
   # GET /transactions/1/edit
@@ -65,10 +76,20 @@ class TransactionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
       @transaction = Transaction.find(params[:id])
+      @accounts= Account.find(current_user).balance
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:transactionId, :userIde)
+      params.require(:transaction).permit(:transPurpose, :services, :transactionDetails, :trasactionAmount, 
+      :account_id, :staff_id, :balanceAfterTransaction, :balanceAfterTransaction, account_attributes: [:bankLocation, 
+      :user_id, :userName, :userEmail, :userPhoneNo, :userAddress, :accountType, :balance, :overdraftLimit, :dob])
+    end
+    
+    def  require_same_user
+			if current_user != @transaction.user
+				flash[:danger] ="You can Update or Delete only your Transaction"
+				redirect_to transaction_path
+			end
     end
 end

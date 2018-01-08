@@ -1,14 +1,52 @@
 <p id="notice"><%= notice %></p>
 
+<h3 align="center"> Account Number: <%= @account.user_id %></h3>
+  <br/><br/>
+
 <p>
-  <strong>Accounttype:</strong>
-  <%= @account.accounttype %>
+  <strong>Branch Location:</strong>
+  <%= @account.bankLocation %>
 </p>
 
 <p>
-  <strong>Balance:</strong>
+  <strong>Name:</strong>
+  <%= @account.userName %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @account.userEmail %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @account.userPhoneNo %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @account.accountType %>
+</p>
+
+<p>
+  <strong>Account Type:</strong>
+  <%= @account.accountType %>
+</p>
+
+<p>
+  <strong>Account Balance:</strong>
   <%= @account.balance %>
 </p>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
+<p>
+  <strong>Overdraft Limit:</strong>
+  <%= @account.overdraftLimit %>
+</p>
+
+<%= link_to 'Edit Account', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
+
+<%= render 'transactions/transaction', obj: @transactions %>
+<%= link_to 'Back', accounts_path %>
+
+<br/><br/>
+<br/><br/>

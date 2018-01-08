@@ -1,7 +1,7 @@
 class CreateStaffs < ActiveRecord::Migration
   def change
     create_table :staffs do |t|
-      t.string :staffId
+      t.string :staff_id
       t.string :staffName
       t.string :staffEmail
       t.string :staffPhoneNo

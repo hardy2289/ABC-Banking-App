@@ -1,9 +1,11 @@
 class CreateAccounts < ActiveRecord::Migration
   def change
-    create_table :accounts do |t|
+    create_table :accounts do |t|   
       t.string :bankLocation
-      t.string :userId
+      t.integer :c_id     
+      t.integer :user_id
       t.string :userName
+      t.date :dob
       t.string :userEmail
       t.string :userPhoneNo
       t.string :userAddress

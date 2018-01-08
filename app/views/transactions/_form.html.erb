@@ -1,25 +1,65 @@
-<%= form_for(@transaction) do |f| %>
-  <% if @transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+<%= render 'defaulterror/errors', obj: @transaction %>
+<div class='row', width=80%>
+<div class='col-xs-12'>
 
-      <ul>
-      <% @transaction.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :transactionId %><br>
-    <%= f.text_field :transactionId %>
+<%= form_for(@transaction, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+  
+  <div class="panel panel-default">
+	 <div class="panel-heading">
+		  <h4><%= t('.sign_in', :default => "Transactions") %></h4>
+		 </div>
+		 
+	<div class="panel-body">
+	  
+		<div class="form-group">
+  	<% if current_user.try(:admin?) %>
+			<%= f.label :Transaction_Purpose %><br>
+			<%= f.select :transPurpose, options_for_select([['Deposit'],['Charge'],['Make a Payment']],
+	     params[:transPurpose]),{}, { class: "form-control"} %>
   </div>
-  <div class="field">
-    <%= f.label :userIde %><br>
-    <%= f.text_field :userIde %>
+  
+  
+		<% elsif current_user %>
+			<%= f.label :Transaction_Purpose %><br>
+			<%= f.select :transPurpose, options_for_select([['Deposit'],['Make a Payment']],
+	     params[:transPurpose]),{}, { class: "form-control"} %>
   </div>
+		<% end %>
+		
+		<% if current_user.try(:admin?) %>
+  <div class="form-group">
+		<%= f.label :Other_Services %><br>
+		<%= f.select :services, options_for_select([['Direct Debits'],['Standing Orders'],['Overdraft'],['Loan'],
+	['Mortgages']], params[:services]),{}, { class: "form-control"} %>
+  </div>
+		<% end %>
+		
+	<div class="form-group">
+		<%= f.label :Transaction_Details %><br>
+		<%= f.text_field :transactionDetails, :maxlength => 140, autocomplete: "off", :placeholder => " Gift Money...", class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :Transaction_Amount %><br>
+		<%= f.number_field :trasactionAmount, :maxlength => 15, autocomplete: "off", :placeholder => "£ 1000 ", class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label :Recipient_Account_Number %><br>
+		<%= f.number_field :account_id, :maxlength => 8, autocomplete: "off", :placeholder => "00145485 ",class: "form-control" %>
+  </div>
+  
+  
+  	<% if current_user.try(:admin?) %>
+  <div class="form-group">
+    <%= f.label :staff_id %><br>
+		<%= f.text_field :staff_id, :maxlength => 35,autocomplete: "off",:placeholder => " JOhn ", class: "Peteresburg" %>
+  </div>
+	<% end %>
+  
+  
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"%>
   </div>
-<% end %>
+ 	<% end %>

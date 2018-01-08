@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104210858) do
+ActiveRecord::Schema.define(version: 20180105141728) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "bankLocation"
-    t.string   "userId"
+    t.integer  "user_id"
     t.string   "userName"
     t.string   "userEmail"
     t.string   "userPhoneNo"
@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 20180104210858) do
     t.float    "overdraftLimit"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "c_id"
+    t.date     "dob"
   end
 
   create_table "staffs", force: :cascade do |t|
-    t.string   "staffId"
     t.string   "staffName"
     t.string   "staffEmail"
     t.string   "staffPhoneNo"
@@ -39,16 +40,18 @@ ActiveRecord::Schema.define(version: 20180104210858) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string   "transactionId"
-    t.string   "userId"
-    t.string   "accountId"
-    t.string   "staffId"
+    t.string   "transPurpose"
+    t.string   "services"
+    t.integer  "user_id"
+    t.integer  "account_id"
+    t.integer  "staff_id"
     t.float    "trasactionAmount"
     t.float    "balanceBeforeTransaction"
     t.float    "balanceAfterTransaction"
     t.string   "transactionDetails"
     t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: falsera
+    t.datetime "updated_at",               null: false
+    
   end
 
   create_table "users", force: :cascade do |t|

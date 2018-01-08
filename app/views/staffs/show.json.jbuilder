@@ -1,1 +1,1 @@
-json.partial! "staffs/staff", staff: @staff
+json.extract! @employee, :id, :staffName, :staffEmail, :staffPhoneNo, :staffRole, :workAtBranch, :created_at, :updated_at

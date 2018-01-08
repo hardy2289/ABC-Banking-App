@@ -1,1 +1,1 @@
-json.partial! "accounts/account", account: @account
+json.extract! @account,  :id, :bankLocation, :user_id, :userName, :userEmail, :userPhoneNo, :userAddress, :accountType, :balance, :overdraftLimit, :c_id, :dob, :created_at, :updated_at

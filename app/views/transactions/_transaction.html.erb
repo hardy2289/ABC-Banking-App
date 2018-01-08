@@ -1,0 +1,120 @@
+<div class="page-header">
+
+<style type="text/css">
+table.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table.blueTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+</style>
+
+
+	<% if current_user.verify==true %>
+	<h5 align="left"> <%= Account.find(current_user).name.upcase %></h5>
+	<h5 align="left">Account Number: <%= Account.find(current_user).c_id %></h5>
+	<h5 align="left">Available Balance: <%= Account.find(current_user).balance %></h5>
+	<h5 align="left">Overdraft: <%= Account.find(current_user).overdraftLimit %></h5>
+	<% end %>
+   <div class="contextual">
+   
+  </div>
+<h5 align="right" style="font-family:verdana">Total Number of transactions: <%= @transactions.count %></h5>
+<table class="blueTable">
+<thead>
+<tr>
+      <th colspan="1">Transaction Purpose</th>
+	  <th colspan="1">Account Number</th>
+      <th colspan="1">Transaction Description</th>
+      <th colspan="1">Transaction Amount (£ GBP)</th>
+      
+	  <% if !current_user.try(:admin?) %>
+	  <th colspan="1">Balance</th>
+	  <% end %>
+	  
+	  <th colspan="1">Transaction Date</th>
+</tr>
+
+</thead>
+
+<tbody>
+    
+	<% obj.each do |transaction|  %>
+      <tr>
+        <td><%= transaction.transPurpose%></td>
+	    <td><%= transaction.account_id %>
+        <td><%= transaction.transactionDetails %></td>
+		<td><%= transaction.trasactionAmount.to_s %></td>
+	
+		<% if !current_user.try(:admin?) %>
+		<td>555 </td>
+	    <% end %>
+	
+		<% if current_user.try(:admin?) %>
+	    <% end %>
+	    <td><%= transaction.created_at.strftime("%d %b %Y %H:%M:%S") %>
+        </td>
+        <% end %>
+      <tr>
+    </tr>
+  </tbody>
+
+</table> <br>
+<% if !current_user.try(:admin?) %>
+<%= link_to 'New Transaction', new_transaction_path , class: "btn btn-primary"%>
+ <% end %>
+<div align="center">
+<%= will_paginate @transactions %>
+</div>
+
