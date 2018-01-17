@@ -1,4 +1,4 @@
-json.array!(@employees) do |staff|
-  json.extract! employee, :id, :staffName, :staffEmail, :staffPhoneNo, :staffRole, :workAtBranch
-  json.url employee_url(employee, format: :json)
+json.array!(@staffs) do |staff|
+  json.extract! staff, :id, :staffName, :staffEmail, :staffPhoneNo, :staffRole, :workAtBranch
+  json.url staff_url(staff, format: :json)
 end

@@ -4,6 +4,6 @@ class Staff < ActiveRecord::Base
 	validates :staffEmail, presence: true
 	validates :staffPhoneNo, presence: true, length: {minimum:1, maximum:11}
 	validates :staffRole, presence: true
-	validates :bankLocation, presence: true
+	validates :workAtBranch, presence: true
 	
 end
