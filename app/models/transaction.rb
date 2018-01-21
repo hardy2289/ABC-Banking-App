@@ -7,22 +7,24 @@ class Transaction < ActiveRecord::Base
     validates :transactionDetails, presence: true ,length: {minimum:1, maximum:40}
 	validates :trasactionAmount, presence: true, length: {minimum:1, maximum:12}
 	validates :account_id, presence: true ,length: {minimum:1, maximum:8}
-	before_save :transaction_updated
+	before_save :transaction_update
+	
     private
-	def transaction_updated
-		if self.transPurpose == 'Transfer'
-				debit = Account.find(user_id)
+    
+	def transaction_update
+		if self.transPurpose == 'Make a Payment'
+				debit = Account.find(id)
 				self.balanceBeforeTransaction = debit.balance
 				self.balanceAfterTransaction = self.balanceBeforeTransaction - self.trasactionAmount
 				self.balanceBeforeTransaction = self.balanceAfterTransaction
-                debit.balance = self.balanceBeforeTransaction
+        debit.balance = self.balanceBeforeTransaction
 		debit.save
 		
 		elsif self.transPurpose == 'Deposit'
-				credit = Account.find(user_id)
-		    self.balanceBeforeTransaction = credit.balance
-		    self.balanceAfterTransaction = self.balanceBeforeTransaction + self.trasactionAmount
-		    self.balanceBeforeTransaction = self.balanceAfterTransaction
+				credit = Account.find(id)
+			    self.balanceBeforeTransaction = credit.balance
+			    self.balanceAfterTransaction = self.balanceBeforeTransaction + self.trasactionAmount
+				self.balanceBeforeTransaction = self.balanceAfterTransaction
 		credit.balance = self.total_balance
 		credit.save
 

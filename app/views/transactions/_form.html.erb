@@ -21,7 +21,7 @@
   
 		<% elsif current_user %>
 			<%= f.label :Transaction_Purpose %><br>
-			<%= f.select :transPurpose, options_for_select([['Deposit'],['Make a Payment']],
+			<%= f.select :transPurpose, options_for_select([['Make a Payment']],
 	     params[:transPurpose]),{}, { class: "form-control"} %>
   </div>
 		<% end %>

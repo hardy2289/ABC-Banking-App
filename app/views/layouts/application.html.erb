@@ -43,28 +43,32 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#"><%= image_tag("abcbanklogo.PNG", :size => '60x45') %> </a>
-          <ul class="nav navbar-nav">
-           
-            
+        
+        <ul class="nav navbar-nav">
+            <li>&nbsp;<%= link_to "About Us", "/about" %></li>
+            <li>&nbsp;<%= link_to "Branch", "/branch"  %></li>
+            <li>&nbsp;<%= link_to "Contact Us", "/contactus"  %></li>
+
+
          <% if logged_in? and not current_user.try(:admin?) %>
-						<% if current_user.verify==false %>
+						<% if current_user.verify==false%>
                  <li><%= link_to "Transfer Money", new_transaction_path %></li>
 	               <li><%= link_to "Statement", transactions_path %></li>
-	               
+
 	         <% end %>
-	         
-						<% elsif current_user=="hardik.ab20@yahoo.com "%>
+
+						<% elsif current_user=="hardik.ab20@yahoo.com"%>
 						<li><%= link_to "Staffs", employees_path %></li>
 						<li><%= link_to "Open Account", new_account_path %></li>
 						<li><%= link_to "Deposit Money", new_transaction_path %></li>
 						<li><%= link_to "Transactions", transactions_path %></li>
             <% end %>
         </ul>
-          
-          
+
+
           <ul class="nav navbar-right col-md-4">
 					<% if current_user.try(:admin?) %>
 					<li class="col-md-8 user-name">
@@ -74,11 +78,11 @@
 				  <h6 align="left|justify"style="color:black"> Last Logged in <%= current_user.last_sign_in_at.strftime("%d %b %Y %H:%M:%S") %></h6>
 				  <h6 align="left|justify"style="color:black">Logged in <%= current_user.sign_in_count %> times </h6>
 					</li>
-					
+
           <li class="col-md-1"> </li>
           <li class="col-md-3 logout"><%= link_to('Logout', destroy_user_session_path,
           class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
-              
+
           <% elsif current_user %>
 					<li class="col-md-8 user-name">
 					<%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe,
@@ -94,10 +98,10 @@
 					<li class="col-md-4 pull-right">
 					<%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary', title: 'Sign In') %>
 					</li>
-              
-              
+
+
               <% end %>
-              
+
               </ul>
                       </div>
                     </div>
@@ -112,9 +116,9 @@
       </div><!--/row-->
       <br><br><br><br><br><br><br><br>
     </div> <!-- /container -->
-    
+
       <footer id="sticky" align='center'>
         &copy; ABC Bank Private Limited. If any Query Please call us on 0800 123 4567</footer>
-        
+
   </body>
 </html>

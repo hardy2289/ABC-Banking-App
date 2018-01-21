@@ -4,6 +4,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show,]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
+	require 'bigdecimal'
 
   # GET /transactions
   # GET /transactions.json
@@ -36,8 +37,8 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
-
     respond_to do |format|
+    @transaction.user = current_user
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }

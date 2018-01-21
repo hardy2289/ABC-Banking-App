@@ -1,5 +1,5 @@
  class WelcomeController < ApplicationController
-   skip_before_action :authenticate_user!, only: [:index]
+   skip_before_action :authenticate_user!, [:index]
   def index
    
    	if current_user.try(:admin?)
