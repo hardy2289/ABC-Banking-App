@@ -37,7 +37,7 @@
 	<div class="form-group">
 			<%= f.label :Email_Address %><br>
 			<%= f.collection_select :userEmail, User.all.where(:verify => false,:admin => false), :id, :userEmail, {}, { :class => "form-control"} %>
-
+ 	
  </div>
 	
 	<div class="form-group">
