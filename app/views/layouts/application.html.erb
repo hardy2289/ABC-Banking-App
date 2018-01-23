@@ -48,24 +48,30 @@
         <a class="navbar-brand" href="#"><%= image_tag("abcbanklogo.PNG", :size => '60x45') %> </a>
         
         <ul class="nav navbar-nav">
-            <li>&nbsp;<%= link_to "About Us", "/about" %></li>
+      
+            <% if logged_in? and not current_user.try(:admin?) %>
+					 	<% if current_user.verify==false%>
+            <li>&nbsp;<%= link_to "Transfer Money", new_transaction_path %></li>
+	          <li>&nbsp;<%= link_to "Statement", transactions_path %></li>
+	          <li>&nbsp;<%= link_to "Staffs", staffs_path %></li>
+						<li>&nbsp;<%= link_to "Open Account", new_account_path %></li>
+						<li>&nbsp;<%= link_to "Deposit Money", new_transaction_path %></li>
+						<li>&nbsp;<%= link_to "Transactions", transactions_path %></li>
+	          <% end %>
+
+						<% elsif current_user.try(:admin?)%>
+						<li>&nbsp;<%= link_to "Staffs", employees_path %></li>
+						<li>&nbsp;<%= link_to "Open Account", new_account_path %></li>
+						<li>&nbsp;<%= link_to "Transfer Money", new_transaction_path %></li>
+						<li>&nbsp;<%= link_to "Transactions", transactions_path %></li>
+          
+            
+            <% else %>
+             <li>&nbsp;<%= link_to "About Us", "/about" %></li>
             <li>&nbsp;<%= link_to "Branch", "/branch"  %></li>
             <li>&nbsp;<%= link_to "Contact Us", "/contactus"  %></li>
-
-
-         <% if logged_in? and not current_user.try(:admin?) %>
-						<% if current_user.verify==false%>
-                 <li><%= link_to "Transfer Money", new_transaction_path %></li>
-	               <li><%= link_to "Statement", transactions_path %></li>
-
-	         <% end %>
-
-						<% elsif current_user=="hardik.ab20@yahoo.com"%>
-						<li><%= link_to "Staffs", employees_path %></li>
-						<li><%= link_to "Open Account", new_account_path %></li>
-						<li><%= link_to "Deposit Money", new_transaction_path %></li>
-						<li><%= link_to "Transactions", transactions_path %></li>
             <% end %>
+          
         </ul>
 
 

@@ -76,8 +76,9 @@ class TransactionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
+      #@accounts.user = current_user
       @transaction = Transaction.find(params[:id])
-      @accounts= Account.find(current_user).balance
+     # @accounts = Account.find(current_user).balance
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -42,11 +42,11 @@
   <%= @account.overdraftLimit %>
 </p>
 
-<%= link_to 'Edit Account', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<%= link_to 'Edit Account', edit_account_path(@account), class: "btn btn-primary" %> |
+<%= link_to 'Back', accounts_path, class: "btn btn-primary" %>
 
-<%= render 'transactions/transaction', obj: @transactions %>
-<%= link_to 'Back', accounts_path %>
+<%= render 'transactions/transaction', obj: @transactions, class: "btn btn-primary" %>
+<%= link_to 'Back', accounts_path, class: "btn btn-primary" %>
 
 <br/><br/>
 <br/><br/>

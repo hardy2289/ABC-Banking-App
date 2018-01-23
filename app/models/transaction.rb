@@ -12,7 +12,7 @@ class Transaction < ActiveRecord::Base
     private
     
 	def transaction_update
-		if self.transPurpose == 'Make a Payment'
+		if self.transPurpose == 'Transfer'
 				debit = Account.find(id)
 				self.balanceBeforeTransaction = debit.balance
 				self.balanceAfterTransaction = self.balanceBeforeTransaction - self.trasactionAmount

@@ -10,16 +10,18 @@
 		 <h4><%= t('.sign_in', :default => "Open Account") %></h4>
 		 </div>
 		 
+	<div class="panel-body">
 	<div class="form-group">
 		<%= f.label :Branch_Location %><br>
 	<%= f.select :bankLocation, options_for_select([['Hounslow'],['Kingston'],['Richmond'],['Twickenham']], params[:bankLocation]),{}, { class: "form-control"} %>
 	</div>	 
 		 
-	<div class="panel-body">
+	
   <div class="form-group">
 		<%= f.label :user_Account_Number %><br>
-		<%= f.number_field : c_id, :maxlength => 8,:readonly => true, :value => rand(1..90000001).to_s, class: "form-control" %>
+		<%= f.number_field :c_id, :maxlength => 8,:readonly => true, :value => rand(1..90000001).to_s, class: "form-control" %>
   </div>
+
   
   <div class="form-group">
 			<%= f.label :Customer_Name %><br>
@@ -35,7 +37,8 @@
 	<div class="form-group">
 			<%= f.label :Email_Address %><br>
 			<%= f.collection_select :userEmail, User.all.where(:verify => false,:admin => false), :id, :userEmail, {}, { :class => "form-control"} %>
-  </div>
+
+ </div>
 	
 	<div class="form-group">
 			<%= f.label :Phone_Number %><br>

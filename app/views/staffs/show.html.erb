@@ -20,15 +20,11 @@
   <%= @staff.staffRole %>
 </p>
 
-<p>
-  <strong>staff_id:</strong>
-  <%= @staff.staff_id %>
-</p>
 
 <p>
   <strong>Branch Location:</strong>
   <%= @staff.workAtBranch%>
 </p>
 
-<%= link_to 'Edit', edit_staff_path(@staff) %> |
-<%= link_to 'Back', staffs_path %>
+<%= link_to 'Edit', edit_staff_path(@staff), class: "btn btn-primary" %> |
+<%= link_to 'Back', staffs_path, class: "btn btn-primary" %>
