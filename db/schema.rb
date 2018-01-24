@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180105141728) do
     t.string   "bankLocation"
     t.integer  "user_id"
     t.string   "userName"
-    t.string   "userEmail"
+    t.string   "email"
     t.string   "userPhoneNo"
     t.string   "userAddress"
     t.string   "accountType"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180105141728) do
 
   create_table "staffs", force: :cascade do |t|
     t.string   "staffName"
-    t.string   "staffEmail"
+    t.string   "email"
     t.string   "staffPhoneNo"
     t.string   "staffRole"
     t.string   "workAtBranch"

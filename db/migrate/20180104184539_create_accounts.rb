@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer :user_id
       t.string :userName
       t.date :dob
-      t.string :userEmail
+      t.string :email
       t.string :userPhoneNo
       t.string :userAddress
       t.string :accountType

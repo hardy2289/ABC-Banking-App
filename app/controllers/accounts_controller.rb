@@ -4,33 +4,21 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    
-  if current_user.try(:admin?)
-			@accounts = Account.order(:name).paginate(page: params[:page], per_page: 15)
-
-		elsif
-			@accounts = current_user.accounts.order(:name).paginate(page: params[:page], per_page: 2)
-		end
-		
+			@accounts = Account.order(:userName).paginate(page: params[:page], per_page: 10)
   end
 
   # GET /accounts/1
   # GET /accounts/1.json
   def show
-    @transactions = Transaction.all.where(:user_id => @account.id).order(created_at: :desc)
-		.paginate(page: params[:page], per_page: 15)
   end
 
   # GET /accounts/new
   def new
     @account = Account.new
-		@find = User.all
-		@set_user_account = @find.where(:verify =>  false)
   end
 
   # GET /accounts/1/edit
   def edit
-    @get_account = Account.all
   end
 
   # POST /accounts
@@ -81,8 +69,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:bankLocation, :c_id, :user_id, :dob, :userName, :userEmail, :userPhoneNo, :userAddress, 
-      :accounttype, :balance, transactions_attributes: [:transactionId, :account_id, :staff_id, :trasactionAmount, :balanceBeforeTransaction,
-      :balanceAfterTransaction, :transactionDetails] )
+      params.require(:account).permit(:c_id, :userName, :dob, :userPhoneNo, :userAddress, :accountType, :balance, :overdraftLimit, :bankLocation)
     end
 end

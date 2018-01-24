@@ -1,21 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h3 align="center"> Account Number: <%= @account.user_id %></h3>
-  <br/><br/>
+
 
 <p>
-  <strong>Branch Location:</strong>
-  <%= @account.bankLocation %>
+  <strong>Account Number:</strong>
+ <%= @account.c_id %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Customer Name:</strong>
   <%= @account.userName %>
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @account.userEmail %>
+  <strong>Date of Birth:</strong>
+  <%= @account.dob %>
 </p>
 
 <p>
@@ -24,7 +23,7 @@
 </p>
 <p>
   <strong>Address:</strong>
-  <%= @account.accountType %>
+  <%= @account.userAddress %>
 </p>
 
 <p>
@@ -42,11 +41,14 @@
   <%= @account.overdraftLimit %>
 </p>
 
+<p>
+  <strong>Branch Location:</strong>
+  <%= @account.bankLocation %>
+</p>
+
 <%= link_to 'Edit Account', edit_account_path(@account), class: "btn btn-primary" %> |
 <%= link_to 'Back', accounts_path, class: "btn btn-primary" %>
 
-<%= render 'transactions/transaction', obj: @transactions, class: "btn btn-primary" %>
-<%= link_to 'Back', accounts_path, class: "btn btn-primary" %>
 
 <br/><br/>
 <br/><br/>

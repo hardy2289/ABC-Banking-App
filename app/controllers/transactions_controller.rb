@@ -85,7 +85,7 @@ class TransactionsController < ApplicationController
     def transaction_params
       params.require(:transaction).permit(:transPurpose, :services, :transactionDetails, :trasactionAmount, 
       :account_id, :staff_id, :balanceAfterTransaction, :balanceAfterTransaction, account_attributes: [:bankLocation, 
-      :user_id, :userName, :userEmail, :userPhoneNo, :userAddress, :accountType, :balance, :overdraftLimit, :dob])
+      :user_id, :userName, :email, :userPhoneNo, :userAddress, :accountType, :balance, :overdraftLimit, :dob])
     end
     
     def  require_same_user

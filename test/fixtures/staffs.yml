@@ -2,14 +2,14 @@
 
 one:
   staffName: MyString
-  staffEmail: MyString
+  email: MyString
   staffPhoneNo: MyString
   staffRole: MyString
   workAtBranch: MyString
 
 two:
   staffName: MyString
-  staffEmail: MyString
+  email: MyString
   staffPhoneNo: MyString
   staffRole: MyString
   workAtBranch: MyString

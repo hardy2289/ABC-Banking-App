@@ -1,28 +1,24 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
- 
-  bankLocation: MyString
+  c_id: 1 
   userName: MyString
-  userEmail: MyString
+  dob: 1990-02-22
   userPhoneNo: MyString
   userAddress: MyString
   accountType: MyString
   balance: 2.5
-  minBalance: 2.5
   overdraftLimit: 2.5
-  c_id: 1 
-  dob: 1990-02-22
+  bankLocation: MyString
+  
 
 two:
-  bankLocation: MyString
+  c_id: 1 
   userName: MyString
-  userEmail: MyString
+  dob: 1990-02-22
   userPhoneNo: MyString
   userAddress: MyString
   accountType: MyString
   balance: 2.5
-  minBalance: 2.5
   overdraftLimit: 2.5
-  c_id: 1 
-  dob: 1990-02-22
+  bankLocation: MyString

@@ -60,27 +60,34 @@ table.blueTable tfoot .links a{
 }
 </style>
 
+ <h3 align="center">Transactions Details</h3>
+   <div class="contextual">
+  </div>
+</div>
 
-	<% if current_user.verify==true %>
-	<h5 align="left"> <%= Account.find(current_user).name.upcase %></h5>
-	<h5 align="left">Account Number: <%= Account.find(current_user).c_id %></h5>
-	<h5 align="left">Available Balance: <%= Account.find(current_user).balance %></h5>
-	<h5 align="left">Overdraft: <%= Account.find(current_user).overdraftLimit %></h5>
+
+	<% if current_user.verify==false %>
+	
+	<h4 align="left">Account Number: 14853655</h4>
+	<h4 align="left">Available Balance: 700.00</h4>
+	<h4 align="left">Overdraft Limit: 100.00</h4>
 	<% end %>
    <div class="contextual">
    
   </div>
-<h5 align="right" style="font-family:verdana">Total Number of transactions: <%= @transactions.count %></h5>
+<hr> <h4 align="left" style="font-family:verdana">Total Number of transactions: <%= @transactions.count %></h4> <hr>
+
+
 <table class="blueTable">
 <thead>
 <tr>
       <th colspan="1">Transaction Purpose</th>
-	  <th colspan="1">Account Number</th>
+	    <th colspan="1">Account Number</th>
       <th colspan="1">Transaction Description</th>
       <th colspan="1">Transaction Amount (£ GBP)</th>
       
 	  <% if !current_user.try(:admin?) %>
-	  <th colspan="1">Balance</th>
+	 
 	  <% end %>
 	  
 	  <th colspan="1">Transaction Date</th>
@@ -91,26 +98,25 @@ table.blueTable tfoot .links a{
 <tbody>
     
 	<% obj.each do |transaction|  %>
-      <tr>
+        <tr>
         <td><%= transaction.transPurpose%></td>
-	    <td><%= transaction.account_id %>
+	      <td><%= transaction.account_id %> </td>
         <td><%= transaction.transactionDetails %></td>
-		<td><%= transaction.trasactionAmount.to_s %></td>
+		    <td><%= transaction.trasactionAmount.to_s %></td>
 	
 		<% if !current_user.try(:admin?) %>
-		<td>555 </td>
 	    <% end %>
 	
 		<% if current_user.try(:admin?) %>
 	    <% end %>
-	    <td><%= transaction.created_at.strftime("%d %b %Y %H:%M:%S") %>
+	      <td><%= transaction.created_at.strftime("%d %b %Y %H:%M:%S") %>
         </td>
         <% end %>
       <tr>
     </tr>
   </tbody>
 
-</table> <br>
+</table> <hr>
 <% if !current_user.try(:admin?) %>
 <%= link_to 'New Transaction', new_transaction_path , class: "btn btn-primary"%>
  <% end %>

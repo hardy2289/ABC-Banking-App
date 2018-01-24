@@ -58,11 +58,11 @@ table.blueTable tfoot .links a{
   border-radius: 5px;
 }
 </style>
-    <h3 align="center">Bank Staff</h3>
+    <h3 align="center">Bank Staff Details</h3>
    <div class="contextual">
   </div>
 </div>
-
+<h4 align="left" style="font-family:verdana">Total Number of Staffs: <%= @staffs.count %></h4> <hr>
 <table class="blueTable">
 <thead>
   <thead>
@@ -86,7 +86,7 @@ table.blueTable tfoot .links a{
         <td><%= staff.staffRole %></td>
         <td><%= staff.workAtBranch %></td>
         
-				<td><%= link_to 'View', staff %>
+				<td><%= link_to 'View', staff%>
         <%= link_to 'Edit', edit_staff_path(staff) %>
 				<%= link_to 'Delete', staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -94,7 +94,7 @@ table.blueTable tfoot .links a{
   </tbody>
 </table>
 
-<br>
+<hr>
 
 <%= link_to 'New Staff', new_staff_path, class: "btn btn-primary" %>
 <div align="center">

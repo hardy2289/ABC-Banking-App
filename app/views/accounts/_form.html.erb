@@ -3,26 +3,21 @@
 <div class='col-xs-12'>
   
 <%= form_for(@account, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-
-
 <div class="panel panel-default">
 	 <div class="panel-heading">
-		 <h4><%= t('.sign_in', :default => "Open Account") %></h4>
+		 <h4><%= t('.sign_in', :default => "Accounts") %></h4>
 		 </div>
 		 
-	<div class="panel-body">
-	<div class="form-group">
-		<%= f.label :Branch_Location %><br>
-	<%= f.select :bankLocation, options_for_select([['Hounslow'],['Kingston'],['Richmond'],['Twickenham']], params[:bankLocation]),{}, { class: "form-control"} %>
-	</div>	 
-		 
 	
-  <div class="form-group">
-		<%= f.label :user_Account_Number %><br>
+		 
+	<div class="panel-body">
+		
+		<div class="form-group">
+		<%= f.label :Account_Number %><br>
 		<%= f.number_field :c_id, :maxlength => 8,:readonly => true, :value => rand(1..90000001).to_s, class: "form-control" %>
   </div>
 
-  
+		
   <div class="form-group">
 			<%= f.label :Customer_Name %><br>
 				<%= f.text_field :userName,:maxlength => 70, class: "form-control" %>
@@ -34,12 +29,7 @@
     [:day, :month, :year], class: "form-control" %>
 	</div>
 
-	<div class="form-group">
-			<%= f.label :Email_Address %><br>
-			<%= f.collection_select :userEmail, User.all.where(:verify => false,:admin => false), :id, :userEmail, {}, { :class => "form-control"} %>
- 	
- </div>
-	
+
 	<div class="form-group">
 			<%= f.label :Phone_Number %><br>
 			<%= f.number_field :userPhoneNo, :maxlength => 11,class: "form-control" %>
@@ -62,9 +52,13 @@
   
   <div class="form-group">
 		<%= f.label :Overdraft_Limit %><br>
-		<%= f.number_field :overdraftLimit, :maxlength => 3, class: "form-control" %>
+		<%= f.number_field :overdraftLimit, :minlength => 3, class: "form-control" %>
   </div>
   
+  <div class="form-group">
+		<%= f.label :Branch_Location %><br>
+	<%= f.select :bankLocation, options_for_select([['Hounslow'],['Kingston'],['Richmond'],['Twickenham']], params[:bankLocation]),{}, { class: "form-control"} %>
+	</div>	
   
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>

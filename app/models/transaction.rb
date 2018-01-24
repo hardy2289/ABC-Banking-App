@@ -13,7 +13,7 @@ class Transaction < ActiveRecord::Base
     
 	def transaction_update
 		if self.transPurpose == 'Transfer'
-				debit = Account.find(id)
+				debit = Account.find(user_id)
 				self.balanceBeforeTransaction = debit.balance
 				self.balanceAfterTransaction = self.balanceBeforeTransaction - self.trasactionAmount
 				self.balanceBeforeTransaction = self.balanceAfterTransaction
@@ -21,7 +21,7 @@ class Transaction < ActiveRecord::Base
 		debit.save
 		
 		elsif self.transPurpose == 'Deposit'
-				credit = Account.find(id)
+				credit = Account.find(user_id)
 			    self.balanceBeforeTransaction = credit.balance
 			    self.balanceAfterTransaction = self.balanceBeforeTransaction + self.trasactionAmount
 				self.balanceBeforeTransaction = self.balanceAfterTransaction

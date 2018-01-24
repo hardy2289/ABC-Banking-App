@@ -1,1 +1,1 @@
-json.extract! @account,  :id, :bankLocation, :user_id, :userName, :userEmail, :userPhoneNo, :userAddress, :accountType, :balance, :overdraftLimit, :c_id, :dob, :created_at, :updated_at
+json.extract! @account,  :id, :c_id,:userName,:dob, :userPhoneNo, :userAddress, :accountType, :balance, :overdraftLimit,  :bankLocation, :created_at, :updated_at

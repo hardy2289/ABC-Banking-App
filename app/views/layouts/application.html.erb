@@ -54,14 +54,14 @@
             <li>&nbsp;<%= link_to "Transfer Money", new_transaction_path %></li>
 	          <li>&nbsp;<%= link_to "Statement", transactions_path %></li>
 	          <li>&nbsp;<%= link_to "Staffs", staffs_path %></li>
-						<li>&nbsp;<%= link_to "Open Account", new_account_path %></li>
+						<li>&nbsp;<%= link_to "Customers", accounts_path %></li>
 						<li>&nbsp;<%= link_to "Deposit Money", new_transaction_path %></li>
 						<li>&nbsp;<%= link_to "Transactions", transactions_path %></li>
 	          <% end %>
 
 						<% elsif current_user.try(:admin?)%>
 						<li>&nbsp;<%= link_to "Staffs", employees_path %></li>
-						<li>&nbsp;<%= link_to "Open Account", new_account_path %></li>
+						<li>&nbsp;<%= link_to "Accounts", accounts_path %></li>
 						<li>&nbsp;<%= link_to "Transfer Money", new_transaction_path %></li>
 						<li>&nbsp;<%= link_to "Transactions", transactions_path %></li>
           
