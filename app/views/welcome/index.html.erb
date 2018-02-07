@@ -4,7 +4,7 @@
 <% else if current_user %>
 
 <% if current_user.verify==true %>
-<h1 align="center"> Welcome to ABC Bank new Website, We Will Update you once we verify your Documents. </h1>
+<h1 align="center"> Welcome to ABC Bank new Website, You will be able to access your account once we Verify your Documents. </h1>
  <% else %>
 <%= render 'transactions/transaction', obj: @transactions%>
 <% end %>
